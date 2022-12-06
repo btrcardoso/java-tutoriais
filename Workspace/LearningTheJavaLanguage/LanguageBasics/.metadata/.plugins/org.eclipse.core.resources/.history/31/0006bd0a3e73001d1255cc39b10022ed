@@ -1,0 +1,33 @@
+package principal;
+
+public class Principal {
+	
+	public static int num;
+	
+	public static void main(String[] args) {
+		
+		// Exercises
+		
+		// 1 
+		
+		// Syntax error on token "int", invalid VariableDeclaratorId
+		///int int = 2;
+		
+		
+		// 2 
+		
+		// The local variable intNum may not have been initialized
+		// int intNum;
+		// System.out.println(intNum); 
+		
+		System.out.println(num);
+		
+		
+		
+	}
+	
+	public void ei() {
+		
+	}
+
+}

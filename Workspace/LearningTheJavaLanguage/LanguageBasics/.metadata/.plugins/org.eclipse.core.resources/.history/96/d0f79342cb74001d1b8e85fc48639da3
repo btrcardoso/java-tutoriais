@@ -1,0 +1,44 @@
+package Operators;
+
+public class Operators {
+	
+	public static void main (String[] args) {
+		
+		// + para soma e concatenação
+		String a = "a";
+		String b = "b";
+		int c = 1;
+		int d = 2;
+		System.out.println(a+b);
+		System.out.println(c+(d+b));
+		
+		// pos fixo
+		
+		int i = 1;
+		
+		// imprime 1
+		System.out.println(i);
+		
+		//imprime 1
+		System.out.println(i++);
+		
+		// imprime 2
+		System.out.println(i);
+		
+		
+		
+		// pre fixo
+		
+		int j = 1;
+		
+		// imprime 1
+		System.out.println(j);
+		
+		//imprime 2
+		System.out.println(++j);
+		
+		// imprime 2
+		System.out.println(j);
+	}
+
+}

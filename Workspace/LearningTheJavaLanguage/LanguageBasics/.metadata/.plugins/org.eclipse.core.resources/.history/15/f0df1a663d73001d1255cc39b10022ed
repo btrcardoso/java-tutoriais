@@ -1,0 +1,11 @@
+package principal;
+
+public class Principal {
+	
+	int inte = 2;
+	
+	public static void main(String[] args) {
+		System.out.println(inte);
+	}
+
+}

@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author btrca
+ *
+ */
+module WhatIsAnInterface {
+}

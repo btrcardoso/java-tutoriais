@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\btrca\OneDrive\Java\Workspace\LearningTheJavaLanguage\Object-OrientedProgrammingConcepts\.metadata\.plugins\org.eclipse.jdt.core
+641067547.index
+1746839846.index
+1865797976.index

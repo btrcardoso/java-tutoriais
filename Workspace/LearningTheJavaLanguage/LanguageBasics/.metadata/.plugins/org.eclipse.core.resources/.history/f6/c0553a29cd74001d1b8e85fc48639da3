@@ -1,0 +1,11 @@
+package Operators;
+
+public class BitwiseBitShift {
+	public static void main(String[] args) {
+		
+		int bitmask = 0x000F;     // 00000000001111 em binario
+		int val = 0x2222;         // 10001000100010 em binario
+		System.out.println(val);  // 00000000000010 em binario
+		
+	}
+}

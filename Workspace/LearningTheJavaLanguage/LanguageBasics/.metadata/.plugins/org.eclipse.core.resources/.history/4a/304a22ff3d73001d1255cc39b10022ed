@@ -1,0 +1,21 @@
+package principal;
+
+public class Principal {
+	
+	
+	
+	public static void main(String[] args) {
+		
+		// Exercises
+		
+		// 1 
+		//Syntax error on token "int", invalid VariableDeclaratorId
+		///int int = 2; 
+		
+		// 2 
+		int intNum;
+		System.out.println(intNum);
+		
+	}
+
+}

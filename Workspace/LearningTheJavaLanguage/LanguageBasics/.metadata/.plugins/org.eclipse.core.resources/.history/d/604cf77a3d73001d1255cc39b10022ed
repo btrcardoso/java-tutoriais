@@ -1,0 +1,14 @@
+package principal;
+
+public class Principal {
+	
+	
+	
+	public static void main(String[] args) {
+		
+		int int = 2;
+		
+		//System.out.println(inte);
+	}
+
+}
