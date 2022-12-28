@@ -478,7 +478,35 @@ O código System.out.println(++i) avalia o valor já incrementado (5+1), já o c
 
 ## Expressões, Statements e Blocos
 
+- Expressões: Construção feita de variáveis, operadores e invocação de métodos.
+- Statements (instruções): o equivalente às sentenças em linguagem natural. Termina sempre com um semicolon (;). 
+- Blocos: Grupos de statements separados por chaves {}.
+
+## [Questões e Exercícios - Expressões, Statements e Blocos](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/questions_expressions.html)
+
+Questions
+1. Operators may be used in building _EXPRESSIONS_, which compute values.
+2. Expressions are the core components of _STATEMENTS_.
+3. Statements may be grouped into _BLOCKS_.
+4. The following code snippet is an example of a _COMPOUND_ expression.
+ 1 * 2 * 3
+5. Statements are roughly equivalent to sentences in natural languages, but instead of ending with a period, a statement ends with a _SEMICOLON (;)_.
+6. A block is a group of zero or more statements between balanced _BRACES {}_ and can be used anywhere a single statement is allowed.
+
+Exercises
+Identify the following kinds of expression statements:
+```java
+- aValue = 8933.234;                    // ASSIGNMENT STATEMENT
+- aValue++;                             // INCREMENT STATEMENT
+- System.out.println("Hello World!");   // METHOD INVOCATION STATEMENT
+- Bicycle myBike = new Bicycle();       // OBJECT CREATION STATEMENT
+```
+
+[Check your answers](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/answers_expressions.html)
+
 ## Control Flow Statements
+
+### Statements if-then e if-then-else
 
 ## <center> [Classes and Objects](https://docs.oracle.com/javase/tutorial/java/javaOO/index.html) </center>
 
