@@ -504,11 +504,178 @@ Identify the following kinds of expression statements:
 
 [Check your answers](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/answers_expressions.html)
 
-## Control Flow Statements
+## Expressões de Controle de Fluxo
 
-### Statements if-then e if-then-else
+### Instrução Switch 
+
+O comando switch utiliza o break para sair do fluxo. Se o break não for usado, ele poderá cair em fall through:
+
+```java
+public static void main(String[] args){
+
+	Arraylist<String> futureMonths = new Arraylist<String>();
+
+	int monthNumber = 8;
+
+	switch(monthNumber){
+		case 1: futureMonths.add("january");
+		case 2: futureMonths.add("february");
+		case 3: futureMonths.add("march");
+		case 4: futureMonths.add("april");
+		case 5: futureMonths.add("may");
+		case 6: futureMonths.add("june");
+		case 7: futureMonths.add("july");
+		case 8: futureMonths.add("august");
+		case 9: futureMonths.add("september");
+		case 10: futureMonths.add("october");
+		case 11: futureMonths.add("november");
+		case 12: futureMonths.add("december");
+			break;
+		default: 
+			break;
+	}
+
+	if(futureMonths.isEmpty()){
+		System.out.println("Número de mês inválido\n");
+	} else {
+		for (String month : futureMonths){
+			System.out.println(month); // mostrará august e todos os meses após august
+		}
+	}
+}
+```
+
+A saída será:
+```
+august
+september
+october
+november
+december
+```
+
+###  Instruções Branching
+
+O comando break pode ser usado para para controles de fluxo rotulados (labeled) ou não-rotulados (unlabeled).
+
+Observe o exemplo que faz parar o controle de fluxo rotulado "search":
+```java
+public class BreakWithLabelDemo {
+	
+	public static void main(String[] args){
+		
+		int[][] intNumbers = {
+			{1,2,3},
+			{4,5,6},
+			{7,8,9}
+		};
+
+		int num = -1, i = -1, j = -1;
+
+		search:
+		for(i = 0; i < intNumbers.length; i++){
+			for(j = 0; j < intNumbers[i].length; j++){
+				if(intNumbers[i][j] == 5){
+					num = intNumbers[i][j]; 
+					break search;
+				}
+			}
+		}
+
+		System.out.println("Found " + num + " in position " + i + ", " + j);
+
+	}
+
+}
+```
+
+## [Questões e Exercícios - Instruções de Controle de Fluxo](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/questions_flow.html)
+
+Questions
+1. The most basic control flow statement supported by the Java programming language is the _IF-THEN_ statement.
+2. The _SWITCH_ statement allows for any number of possible execution paths.
+3. The _DO-WHILE_ statement is similar to the while statement, but evaluates its expression at the _BOTTOM_ of the loop.
+4. How do you write an infinite loop using the for statement?
+```java
+for(;;){}
+```
+5. How do you write an infinite loop using the while statement?
+```java
+while(true){}
+```
+
+Exercises
+
+1. Consider the following code snippet.
+
+```java
+if (aNumber >= 0)
+    if (aNumber == 0)
+        System.out.println("first string");
+else System.out.println("second string");
+System.out.println("third string");
+```
+a. What output do you think the code will produce if aNumber is 3?
+```
+second string
+third string
+
+The else clause is attached to the second if (probably if-then-else is just one statement).
+```
+
+b. Write a test program containing the previous code snippet; make aNumber 3. What is the output of the program? Is it what you predicted? Explain why the output is what it is; in other words, what is the control flow for the code snippet?
+c. Using only spaces and line breaks, reformat the code snippet to make the control flow easier to understand.
+d. Use braces, { and }, to further clarify the code.
+```java
+if (aNumber >= 0){
+	if (aNumber == 0){
+        System.out.println("first string");
+	} else {
+		System.out.println("second string");
+	} 
+} 
+System.out.println("third string");
+```
+
+[Check your answers](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/answers_flow.html)
 
 ## <center> [Classes and Objects](https://docs.oracle.com/javase/tutorial/java/javaOO/index.html) </center>
+
+## [Classes](https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html)
+
+### Declarando classes
+
+MyClass é uma subclasse de MySuperClass que implementa YourInterface
+```java
+class MyClass extends MySuperClass implements YourInterface{
+	// field, constructor, and
+	// method declarations
+}
+```
+
+As declarações de classes possuem o seguinte formato:
+```java
+<modificador> class <NomeDaClasse> extends <NomeDaSuperClasse> implements <NomeDaInterface> {}
+```
+
+## [Objetos](https://docs.oracle.com/javase/tutorial/java/javaOO/objects.html)
+
+## [Mais de Classes](https://docs.oracle.com/javase/tutorial/java/javaOO/more.html)
+
+## [Questões e exercícios - Classes](https://docs.oracle.com/javase/tutorial/java/javaOO/QandE/creating-questions.html)
+
+## [Questões e exercícios - Objetos](https://docs.oracle.com/javase/tutorial/java/javaOO/QandE/objects-questions.html)
+
+## [Classes aninhadas](https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html)
+
+## [Questões  exercícios - Classes aninhadas](https://docs.oracle.com/javase/tutorial/java/javaOO/QandE/nested-questions.html)
+
+## [Tipos Enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
+
+## [Questões e exercícios - Tipos Enum](https://docs.oracle.com/javase/tutorial/java/javaOO/QandE/enum-questions.html)
+
+
+
 
 ## <center> [Annotations](https://docs.oracle.com/javase/tutorial/java/annotations/index.html) </center>
 
