@@ -198,7 +198,7 @@ Java suporta oito tipos primitivos de dados:
 - **boolean**: true e false.
 - **char**: caractere de 16 bits. Tem valor mínimo de '\u0000' (0) e valor máximo '\uffff' (65535).
 
-Além dos 8 tipos de dados primitivos, o Java também dá suporte para string pela Classe java.lang.String. Objeto String são imutáveis. Uma vez que se cria um objeto do tipo String, ele não pode ser alterado ([Testei](Workspace/LearningTheJavaLanguage/LanguageBasics), e parece que isso é mentira).
+Além dos 8 tipos de dados primitivos, o Java também dá suporte para string pela Classe java.lang.String. Objeto String são imutáveis. Uma vez que se cria um objeto do tipo String, ele não pode ser alterado ([Testei](Workspace/LearningTheJavaLanguage/LanguageBasics), e parece que isso é mentira) -> (Na realidade não é mentira. Pensei que fosse porque consegui alterar um objeto do tipo String, mas na verdade, "alterar" uma String em java, é criar uma nova String e passar o endereço dessa nova String para a variável).
 
 Obs: byte e short geralmente são utilizados quando economia de memória for importante na aplicação.
 
@@ -367,6 +367,10 @@ Exercises
 [Check your answers](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/answers_variables.html)
 
 ## Operadores
+
+Equals: compara dois objetos se o conteúdo de dois objetos é o mesmo, ainda que sejam instâncias diferentes.
+== : compara dois tipos primitivos, e também pode ser usado para comparar se dois objetos são a mesma instancia.
+- essa explicação não está muito boa, melhor procurar outra.
 
 <table border="1" cellpadding="5" summary="This table lists operators according to precedence order">
 <caption id="nutsandbolts-precedence"><strong>Operator Precedence</strong></caption>
@@ -664,18 +668,157 @@ As declarações de classes possuem o seguinte formato:
 
 ## [Questões e exercícios - Classes](https://docs.oracle.com/javase/tutorial/java/javaOO/QandE/creating-questions.html)
 
+Questões
+
+1. Consider the following class:
+
+```java
+public class IdentifyMyParts {
+    public static int x = 7; 
+    public int y = 3; 
+}
+```
+- What are the class variables? _x_
+
+- What are the instance variables? _y_
+
+- What is the output from the following code:
+
+```java
+IdentifyMyParts a = new IdentifyMyParts();
+IdentifyMyParts b = new IdentifyMyParts();
+a.y = 5;
+b.y = 6;
+a.x = 1;
+b.x = 2;
+System.out.println("a.y = " + a.y);  // 5
+System.out.println("b.y = " + b.y);  // 6
+System.out.println("a.x = " + a.x);  // 2
+System.out.println("b.x = " + b.x);  // 2
+System.out.println("IdentifyMyParts.x = " + IdentifyMyParts.x); // 2
+```
+
 ## [Questões e exercícios - Objetos](https://docs.oracle.com/javase/tutorial/java/javaOO/QandE/objects-questions.html)
 
-## [Classes aninhadas](https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html)
+1. What's wrong with the following program?
+
+```java
+public class SomethingIsWrong {
+    public static void main(String[] args) {
+        Rectangle myRect;
+        myRect.width = 40;
+        myRect.height = 50;
+        System.out.println("myRect's area is " + myRect.area());
+    }
+}
+```
+
+_myRect must to be initialized._
+
+2. 
+```java
+String[] students = new String[10];
+String studentName = "Peter Parker";
+students[0] = studentName;
+studentName = null;
+```
+
+The following code creates one array and one string object. How many references to those objects exist after the code executes? 
+_In the third line, 2 (students[0] and studentName), but in the 4th line, just a reference to "Peter Smith" in students[0]._
+
+Is either object eligible for garbage collection?
+_Just for studentName_
+
+
+3. How does a program destroy an object that it creates?
+Não destrói. Apenas deixa a referência nula para os objetos.
+
+
+## [Classes aninhadas (Nested Classes)](https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html)
+
+```java
+class OuterClass{
+
+	class InnerClass{
+		...
+	}
+
+	static class StaticNestedClass{
+		...
+	}
+
+}
+```
+
+Tipos:
+- Classe aninhada não-estática (Inner class): Possuem acesso a outros membros da classe exterior mesmo que sejam privados.
+- Classe aninhada estática: Não possuem acesso ao membros da classe exterior.
+
+### Inner class
+
+Para instanciar uma Inner Class, deve-se instanciar primeiro sua classe externa.
+```java
+OuterClass outerObject = new OuterClass();
+OuterClass.InnerClass innerObject = outerObject.new InnerClass();
+```
 
 ## [Questões  exercícios - Classes aninhadas](https://docs.oracle.com/javase/tutorial/java/javaOO/QandE/nested-questions.html)
 
+Questions
+1. The program Problem.java doesn't compile. What do you need to do to make it compile? Why?
+
+```java
+public class Problem {
+	String s;
+	static class Inner {
+		void testMethod() {
+		   s = "Set from Inner";
+		}
+	}
+}
+```
+_A classe aninhada estática Inner não pode acessar os atributo s da classe externa. Só poderia acessar se Inner não fosse estática._
+
 ## [Tipos Enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
+
+Tipo de variável que consiste de um conjunto fixo de constantes.
+
+```java
+enum TamanhoCafe{GRANDE, GIGANTE, GIGANTESCO};
+TamanhoCafe tc = TamanhoCafe.GRANDE;
+```
+
+Enums podem ser declaradas em uma classe separada ou como membro de uma classe, mas nunca em uma função.
+
+Enums estendem implicitamente java.lang.Enum.
+
+Enums não podem estender de outra classe. (Pois classes só podem ter uma classe pai)
+
+### Declarando construtores de uma Enum
+
+```java
+enum TamanhoCafe{
+    GRANDE(8), GIGANTE(10), GIGANTESCO(16);
+
+    private int valor;
+
+    TamanhoCafe(int valor){
+        this.valor = valor;
+    }
+
+    public int getValor(){
+        return valor;
+    }
+}
+```
+
+java.lang.Enum possui o método estático values() que retorna um array com todos os valores do Enum.
 
 ## [Questões e exercícios - Tipos Enum](https://docs.oracle.com/javase/tutorial/java/javaOO/QandE/enum-questions.html)
 
-
-
+Question
+1. True or false: an Enum type can be a subclass of java.lang.String
+_FALSE_
 
 ## <center> [Annotations](https://docs.oracle.com/javase/tutorial/java/annotations/index.html) </center>
 
